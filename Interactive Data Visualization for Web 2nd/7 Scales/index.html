@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="/__static__/d3.js"></script>
+</head>
+<body>
+    <script>
+      const scale = d3.scaleLinear()
+
+      console.log( scale( 5  ) ) // 5
+
+      scale.domain( [ 1, 10 ] )
+          .range( [ 2, 20 ] )
+
+      console.log( scale( 5  ) ) // 10
+
+      scale.domain( [ 1, 10 ] )
+          .range( [ 3, 30 ] )
+
+      console.log( scale( 5  ) ) // 15
+
+      scale.domain( [ 1, 10 ] ) // 2n + 1
+          .range( [ 3, 21 ] )
+        
+      console.log( scale( 5  ) ) // 11
+    </script>
+</body>
+</html>

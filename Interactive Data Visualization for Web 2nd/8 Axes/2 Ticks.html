@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="/__static__/d3.js"></script>
+</head>
+
+<body>
+  <script>
+    // without ticks
+    {
+      const xScale = d3.scaleLinear()
+        .domain([0, 100])
+        .range([0, 200])
+
+      const xAxis = d3.axisBottom()
+        .scale(xScale)
+
+      d3.select('body')
+        .append('svg')
+        .append('g')
+        .call(xAxis)
+    }
+
+    // average ticks
+    {
+      const xScale = d3.scaleLinear()
+        .domain([0, 100])
+        .range([0, 200])
+
+      const xAxis = d3.axisBottom()
+        .scale(xScale)
+        .ticks( 5 )
+
+      d3.select('body')
+        .append('svg')
+        .append('g')
+        .call(xAxis)
+    }
+
+    // specifying ticks
+    {
+      const xScale = d3.scaleLinear()
+        .domain([0, 100])
+        .range([0, 200])
+
+      const xAxis = d3.axisBottom()
+        .scale(xScale)
+        .tickValues([0, 20, 60, 100])
+
+      d3.select('body')
+        .append('svg')
+        .append('g')
+        .call(xAxis)
+    }
+
+
+  </script>
+</body>
+
+</html>
