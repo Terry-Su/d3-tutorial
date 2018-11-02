@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="/__static__/d3.js"></script>
+</head>
+<body>
+  <h2>Single</h2>
+  <div class="single">Single</div>
+
+  <h2>Multiple</h2>
+  <div class="multiple">Multiple</div>
+  <div class="multiple">Multiple</div>
+  <div class="multiple">Multiple</div>
+  
+
+  <h2>Iteration</h2>
+  <div class="iteration">Iteration</div>
+  <div class="iteration">Iteration</div>
+  <div class="iteration">Iteration</div>
+  <div class="iteration">Iteration</div>
+  <div class="iteration">Iteration</div>
+
+
+  <h2>Subselection</h2>
+  <div class="subselection">
+    Parent
+    <div class="child"> Child </div>
+  </div>
+
+  <h2>Function Chain</h2>
+  <div class="functionChain">Elements:</div>
+
+<script>
+  d3.select( '.single' )
+    .style( 'color', 'blue' )
+
+
+
+  d3.selectAll( '.multiple' )
+    .style( 'color', 'red' )
+
+
+
+  d3.selectAll( '.iteration' )
+    .style( 'color', 'purple' )
+    .each( function( data, index ) {
+      d3.select( this )
+        .append( 'span' )
+        .text( `: ${ index }` )
+    } )
+
+
+
+  d3.select( '.subselection' )
+    .select( '.child' )
+    .style( 'color', 'blue' )
+
+
+
+  d3.select( '.functionChain' )
+    .append( 'span' )
+    .text( ' element1' )
+    
+  d3.select( '.functionChain' )
+    .append( 'span' )
+    .text( ' element2' )
+  
+</script>
+</body>
+</html>

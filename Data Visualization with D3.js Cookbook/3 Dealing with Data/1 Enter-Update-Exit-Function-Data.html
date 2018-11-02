@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="/__static__/d3.js"></script>
+</head>
+
+<body>
+  <h2>Data ∩ View</h2>
+  <div class="a"></div>
+  <div class="a"></div>
+  <div class="a"></div>
+
+
+  <h2>Data \ View( Enter )</h2>
+  <div class="bContainer">
+      <div class="b"></div>
+      <div class="b"></div>
+      <div class="b"></div>
+  </div>
+
+  <h2>View \ Data( Exit )</h2>
+  <div class="c"></div>
+  <div class="c"></div>
+  <div class="c"></div>
+
+
+  <h2>Update</h2>
+  <div class="d"></div>
+  <div class="d"></div>
+  <div class="d"></div>
+
+
+
+  <h2>Function Data</h2>
+  <div class="e"></div>
+  <div class="e"></div>
+  <div class="e"></div>
+
+  <script>
+    // Data ∩ View 
+    const data1 = [10, 20, 30, 40, 50]
+    d3.selectAll('.a')
+      .data(data1)
+      .text(element => element)
+
+
+    // Data \ View( Enter )
+    const data2 = [10, 20, 30 ]
+    d3.select( '.bContainer' )
+        .selectAll( '.b' )
+          .data( data2 )
+            .text( element => element )
+          .enter()
+            .append( 'div' )
+            .text( element => element )
+            .style( 'color', 'blue' )
+
+
+    // View \ Data( Exit )
+    let data3 = [ 10, 20, 30 ]
+    d3.selectAll( '.c' )
+      .data( data3 )
+      .text( element => element )
+
+    data3.pop()
+
+    d3.selectAll( '.c' )
+      .data( data3 )
+      .exit()
+      .remove()
+
+
+
+    // Update
+    let data4 = [ 10, 20, 30 ]
+    d3.selectAll( '.d' )
+      .data( data4 )
+      .text( element => element )
+
+    data4 = [ 1, 2, 3 ]
+
+    d3.selectAll( '.d' )
+      .data( data4 )
+      .text( element => element )
+
+
+
+    // Function Data
+    let data = []
+    const dataFunc = () => {
+      const number = data.length + 1
+      data.push( number )
+      return data
+    }
+
+    const render = () => {
+      d3.selectAll( '.e' )
+      .data( dataFunc )
+      .text( element => element )
+    }
+    
+    render()
+    setTimeout( render, 1000 )
+    setTimeout( render, 2000 )
+    
+  </script>
+</body>
+
+</html>

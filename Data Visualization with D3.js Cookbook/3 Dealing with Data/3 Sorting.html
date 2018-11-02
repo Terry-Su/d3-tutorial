@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="/__static__/d3.js"></script>
+</head>
+
+<body>
+  <div class="a"></div>
+  <div class="a"></div>
+  <div class="a"></div>
+  <div class="a"></div>
+  <div class="a"></div>
+  <div class="a"></div>
+  <div class="a"></div>
+
+  <script>
+    const data = [ 10, 30, 20, 50, 80, 60, ]
+
+    const ascendingSort = function( a, b ) {
+      return a > b ? 1 : ( a < b ? -1 : 0 )
+    }
+
+    d3.selectAll( '.a' )
+      .data( data )
+      .text( text => text )
+
+    const update = () => {
+      d3.selectAll( '.a' )
+        .sort( ascendingSort )
+    }
+
+    setTimeout( update, 1000 )
+
+  </script>
+</body>
+
+</html>
